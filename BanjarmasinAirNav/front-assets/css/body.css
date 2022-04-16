@@ -1,0 +1,43 @@
+.img-header{
+     transform: translateX(-200px);
+}
+
+.bg-clients{
+    background-image: url('../assets/bg-content.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-form{
+    background-image: url('../assets/bg-form.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-email{
+    padding: 14px;
+    padding-left: 16px;
+    padding-right: 50px;
+    border: 1px solid grey;
+    transition: 300ms;
+    width: 350px;
+    border-radius: 8px;
+}
+
+.form-email:focus{
+    outline: none;
+    box-shadow: 5px 3px 10px #2F5BEA;
+}
+
+.xs-block{
+    display: none;
+}
+
+.display-header{
+    display: none;
+}
+
+.display-space{
+    display: block;
+}
+

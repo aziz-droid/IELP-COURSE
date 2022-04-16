@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteRule ^masuk login.php
+RewriteRule ^keluar logout.php
+RewriteRule ^daftar admin/register.php
+
+
+
+
+
+
+
+
