@@ -27,6 +27,7 @@
                         <thead align="center">
                         <tr>
                           <th>No</th>
+                          <th>Bab</th>
                           <th>Materi</th>
                           <th>Jadwal</th>
                           <th>Link Kelas</th>
