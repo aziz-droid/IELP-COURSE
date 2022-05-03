@@ -36,15 +36,20 @@
             </div>
             <div class="col-12">
                 <label for="inputAddress" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <input type="text" class="form-control" id="inputAddress">
             </div>
             <div class="col-12">
                 <label for="inputAddress2" class="form-label">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                <input type="text" class="form-control" id="inputAddress2" placeholder="">
             </div>
             <div class="col-md-6">
                 <label for="inputCity" class="form-label">Profesi</label>
-                <input type="text" class="form-control" id="inputCity">
+                <select class="form-select" aria-label="Default select example">
+                    <!-- <option selected>Pilih Profesi</option> -->
+                    <option value="1">Mahasiswa</option>
+                    <option value="2">Pelajar</option>
+                    <option value="3">Pekerja</option>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="inputState" class="form-label">No.Telp</label>
@@ -63,8 +68,11 @@
                 </div>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary fw-bold"
-                    style="margin:20px 0 0 300px; background-color: #F7CE03; color: black;">Sign in</button>
+                <a class="btn btn-primary fw-bold" href="login.html" role="button"
+                    style="margin:20px 0 0 300px; background-color: #F7CE03; color: black;">Register</a>
+
+                <!-- <button type="submit" href="login.html" class="btn btn-primary fw-bold"
+                    style="margin:20px 0 0 300px; background-color: #F7CE03; color: black;">Sign in</button> -->
             </div>
         </form>
     </div>
