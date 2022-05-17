@@ -7,7 +7,7 @@
     <title>Blank Page &mdash; Stisla</title>
 
     <!-- General CSS Files -->
-    @if (Request::is('admin/*'))
+    @if (Request::is('admin/*') || Request::is('admin'))
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @endif
@@ -17,11 +17,11 @@
     <!-- CSS Libraries -->
 
     <!-- Template CSS -->
-    @if (Request::is('admin/*'))
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <link rel="stylesheet" href="../assets/css/components.css">
+    @if (Request::is('admin/*') || Request::is('admin'))
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/component.css') }}">
     @else
-        <link rel="stylesheet" href="./assets/css/app.css">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @endif
 </head>
 
@@ -38,13 +38,13 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../assets/js/stisla.js"></script>
+    <script src="{{ asset('js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
-    <script src="../../assets/js/scripts.js"></script>
-    <script src="../assets/js/app.js"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

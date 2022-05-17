@@ -1,6 +1,6 @@
 @extends('layouts.client.main')
 @section('client')
-    <div class="container py-5">
+    <div class="container pt-24 md:pt-36 pb-6">
         <div class="flex flex-wrap">
             <img src="{{ asset('img/plane.jpg') }}" alt="" class="w-full">
             <div class="w-full md:w-1/2 my-4 px-2">
