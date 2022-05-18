@@ -2179,6 +2179,13 @@ $("#hamburger").on("click", function () {
     $("#nav").removeClass("opacity-100");
   }
 });
+$("#profile").on("click", function () {
+  if ($("#dropdown").hasClass("hidden")) {
+    $("#dropdown").removeClass("hidden");
+  } else {
+    $("#dropdown").addClass("hidden");
+  }
+});
 
 /***/ }),
 

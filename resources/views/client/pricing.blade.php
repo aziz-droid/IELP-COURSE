@@ -51,6 +51,9 @@
                     penerbangan sesuai standard ICAO Level 4 (minimum). <a href="" class="text-blue-600 underline">Document
                         Silabus IELP Course</a>
                 </div>
+                <div class="w-min my-6 whitespace-nowrap mx-auto">
+                    <a href="" class="py-2 px-32 rounded bg-[#02669A] text-white">Daftar Kursus</a>
+                </div>
             </div>
             <div class="my-4 w-full">
                 <div class="w-full my-4">

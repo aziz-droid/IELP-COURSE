@@ -4,7 +4,7 @@
         <div class="md:container w-full md:flex md:items-center py-4 px-4 md:px-0 md:justify-between bg-[#02669A]">
             <div class="flex justify-between items-center lg:w-1/3 md:1/5">
                 <a href="#" class="flex items-center gap-1">
-                    <img src="assets/img/logo.png" class="w-12" alt="">
+                    <img src="{{ asset('img/logo.png') }}" class="w-12" alt="">
                     <span class="text-amber-400 font-bold">IELP COURSE</span>
                 </a>
 
@@ -36,7 +36,18 @@
                     </li>
                 </ul>
                 <button class="py-1 px-3 bg-slate-200 my-2 ml-3 md:ml-0 rounded hover:bg-slate-300 transition ease-in"
-                    type="button">Login/Register</button>
+                    type="button"><a href="/login">Login/Register</a></button>
+                {{-- <div class="">
+                    <div class="flex items-center cursor-pointer my-4 relative" id="profile">
+                        <img src="{{ asset('img/icons/user.png') }}" alt="" class="w-8">
+                        <p class="ml-2 text-white">Abdul Kodir&nbsp; <i class="fas fa-angle-down"></i></p>
+                    </div>
+                    <div class="text-white absolute top-full pb-3 px-14 md:pl-10 w-full md:w-max left-0 md:left-auto bg-[#02669A]  hidden"
+                        id="dropdown">
+                        <a href="/class" class="block hover:text-slate-400 my-2">Class</a>
+                        <a href="" class="block hover:text-slate-400 my-2">Logout</a>
+                    </div>
+                </div> --}}
             </div>
         </div>
     </nav>

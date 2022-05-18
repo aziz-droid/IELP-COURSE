@@ -6,3 +6,22 @@
  */
 
 "use strict";
+
+console.log(typeof $("#input"));
+$("#modal-1").fireModal({
+    title: "Tambah Kelas",
+    body: $("#modal-form"),
+    footerCLass: "my-modal footer-class",
+    buttons: [
+        {
+            submit: true,
+            class: "btn btn-primary btn-shadow",
+            text: "Login",
+            id: "",
+            handler: () => {
+                $(this).submit();
+            },
+        },
+    ],
+});
+$("#data").DataTable();

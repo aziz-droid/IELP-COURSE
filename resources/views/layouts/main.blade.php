@@ -19,7 +19,7 @@
     <!-- Template CSS -->
     @if (Request::is('admin/*') || Request::is('admin'))
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/component.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/datatables.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @endif
@@ -41,10 +41,11 @@
     <script src="{{ asset('js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
-
+    <script src="{{ asset('js/datatables.js') }}"></script>
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 
 </html>

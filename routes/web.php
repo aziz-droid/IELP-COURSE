@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,35 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('client.home');
 });
-Route::get('/admin', function () {
+Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
+});
+Route::get('/admin/class', function () {
+    return view('admin.class');
+});
+Route::get('/admin/verif/belum', function () {
+    return view('admin.paymentbelum');
+});
+Route::get('/admin/verif/sudah', function () {
+    return view('admin.paymentsudah');
+});
+Route::get('/admin/prices', function () {
+    return view('admin.prices');
+});
+Route::get('/admin/videos', function () {
+    return view('admin.class');
+});
+Route::get('/admin/mentor', function () {
+    return view('admin.class');
+});
+Route::get('/admin/admin', function () {
+    return view('admin.class');
+});
+Route::get('/admin/users', function () {
+    return view('admin.class');
+});
+Route::get('/admin/dokumen', function () {
+    return view('admin.class');
 });
 Route::get('/training', function () {
     return view('client.training');
@@ -27,4 +55,25 @@ Route::get('/pricing', function () {
 });
 Route::get('/contact', function () {
     return view('client.contact');
+});
+Route::get('/login', function () {
+    return view('client.login');
+});
+Route::get('/register', function () {
+    return view('client.register');
+});
+Route::get('/payment', function () {
+    return view('client.payment');
+});
+Route::get('/class', function () {
+    return view('client.class');
+});
+Route::get('/class/content', function () {
+    return view('client.classContent');
+});
+Route::get('/document', function () {
+    return view('client.document');
+});
+Route::get('/videos', function () {
+    return view('client.videos');
 });
