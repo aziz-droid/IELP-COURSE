@@ -1,8 +1,10 @@
 @extends('layouts.client.main')
 @section('client')
-    <div class="container pt-24 md:pt-36 pb-6">
+    <div class="container pt-32 md:pt-36 pb-6">
         <div class="flex flex-wrap">
-            <img src="{{ asset('img/plane.jpg') }}" alt="" class="w-full">
+            <div class="w-full md:h-96 hidden md:block bg-center bg-no-repeat bg-cover"
+                style="background-image: url('{{ asset('img/plane.jpg') }}')"></div>
+            <img src="{{ asset('img/plane.jpg') }}" alt="" class="w-full md:hidden">
             <div class="w-full md:w-1/2 my-4 px-2">
                 <div class="flex items-center gap-2">
                     <div>

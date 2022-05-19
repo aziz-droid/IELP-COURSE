@@ -2165,15 +2165,15 @@ module.exports = {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $("#hamburger").on("click", function () {
-  if (!$("#nav").hasClass("top-[80px]")) {
+  if (!$("#nav").hasClass("top-full")) {
     $("#hamburger").addClass("hamburger-active");
-    $("#nav").addClass("top-[80px]");
+    $("#nav").addClass("top-full");
     $("#nav").addClass("opacity-100");
     $("#nav").removeClass("opacity-0");
     $("#nav").removeClass("top-[-400px]");
   } else {
     $("#hamburger").removeClass("hamburger-active");
-    $("#nav").removeClass("top-[80px]");
+    $("#nav").removeClass("top-full");
     $("#nav").addClass("top-[-400px]");
     $("#nav").addClass("opacity-0");
     $("#nav").removeClass("opacity-100");
