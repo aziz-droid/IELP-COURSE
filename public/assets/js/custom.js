@@ -7,16 +7,29 @@
 
 "use strict";
 
-console.log(typeof $("#input"));
 $("#modal-1").fireModal({
-    title: "Tambah Kelas",
+    title: $("#modal-1").data("title"),
     body: $("#modal-form"),
-    footerCLass: "my-modal footer-class",
     buttons: [
         {
             submit: true,
             class: "btn btn-primary btn-shadow",
-            text: "Login",
+            text: "Simpan",
+            id: "",
+            handler: () => {
+                $(this).submit();
+            },
+        },
+    ],
+});
+$("#modal-2").fireModal({
+    title: $("#modal-2").data("title"),
+    body: $("#modal-form-desk"),
+    buttons: [
+        {
+            submit: true,
+            class: "btn btn-primary btn-shadow",
+            text: "Simpan",
             id: "",
             handler: () => {
                 $(this).submit();

@@ -33,19 +33,19 @@ Route::get('/admin/prices', function () {
     return view('admin.prices');
 });
 Route::get('/admin/videos', function () {
-    return view('admin.class');
+    return view('admin.videos');
 });
 Route::get('/admin/mentor', function () {
-    return view('admin.class');
+    return view('admin.mentor');
 });
 Route::get('/admin/admin', function () {
-    return view('admin.class');
+    return view('admin.admin');
 });
 Route::get('/admin/users', function () {
-    return view('admin.class');
+    return view('admin.users');
 });
 Route::get('/admin/dokumen', function () {
-    return view('admin.class');
+    return view('admin.dokumen');
 });
 Route::get('/training', function () {
     return view('client.training');

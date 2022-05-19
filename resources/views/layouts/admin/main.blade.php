@@ -8,75 +8,7 @@
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a>
                         </li>
-                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
-                                    class="fas fa-search"></i></a></li>
                     </ul>
-                    <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                        <div class="search-backdrop"></div>
-                        <div class="search-result">
-                            <div class="search-header">
-                                Histories
-                            </div>
-                            <div class="search-item">
-                                <a href="#">How to hack NASA using CSS</a>
-                                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-                            </div>
-                            <div class="search-item">
-                                <a href="#">Kodinger.com</a>
-                                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-                            </div>
-                            <div class="search-item">
-                                <a href="#">#Stisla</a>
-                                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-                            </div>
-                            <div class="search-header">
-                                Result
-                            </div>
-                            <div class="search-item">
-                                <a href="#">
-                                    <img class="mr-3 rounded" width="30" src="../assets/img/products/product-3-50.png"
-                                        alt="product">
-                                    oPhone S9 Limited Edition
-                                </a>
-                            </div>
-                            <div class="search-item">
-                                <a href="#">
-                                    <img class="mr-3 rounded" width="30" src="../assets/img/products/product-2-50.png"
-                                        alt="product">
-                                    Drone X2 New Gen-7
-                                </a>
-                            </div>
-                            <div class="search-item">
-                                <a href="#">
-                                    <img class="mr-3 rounded" width="30" src="../assets/img/products/product-1-50.png"
-                                        alt="product">
-                                    Headphone Blitz
-                                </a>
-                            </div>
-                            <div class="search-header">
-                                Projects
-                            </div>
-                            <div class="search-item">
-                                <a href="#">
-                                    <div class="search-icon bg-danger text-white mr-3">
-                                        <i class="fas fa-code"></i>
-                                    </div>
-                                    Stisla Admin Template
-                                </a>
-                            </div>
-                            <div class="search-item">
-                                <a href="#">
-                                    <div class="search-icon bg-primary text-white mr-3">
-                                        <i class="fas fa-laptop"></i>
-                                    </div>
-                                    Create a new Homepage Design
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </form>
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
@@ -173,46 +105,55 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
-                        <li class="">
+                        <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/dashboard">
                                 <i class="fas fa-home"></i> <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="">
+                        <li class="{{ Request::is('admin/class') ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/class">
                                 <i class="fas fa-book-open"></i> <span>Class</span>
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown {{ Request::is('admin/verif/*') ? 'active' : '' }}">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-dollar-sign"></i> <span>Payment</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="/admin/verif/belum">Belum Verifikasi</a></li>
-                                <li><a class="nav-link" href="/admin/verif/sudah">Sudah Verifikasi</a></li>
+                                <li class="{{ Request::is('admin/verif/belum') ? 'active' : '' }}"><a
+                                        class="nav-link" href="/admin/verif/belum">Belum Verifikasi</a></li>
+                                <li class="{{ Request::is('admin/verif/sudah') ? 'active' : '' }}"><a
+                                        class="nav-link" href="/admin/verif/sudah">Sudah Verifikasi</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i>
+                        <li
+                            class="nav-item dropdown {{ Request::is('admin/prices') || Request::is('admin/videos') || Request::is('admin/mentor') ? 'active' : '' }}">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-globe"></i>
                                 <span>Management Page</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="/admin/prices">Prices</a></li>
-                                <li><a class="nav-link" href="/admin/videos">Videos</a></li>
-                                <li><a class="nav-link" href="/admin/mentor">Mentor</a></li>
+                                <li class="{{ Request::is('admin/prices') ? 'active' : '' }}"><a class="nav-link"
+                                        href="/admin/prices">Prices</a></li>
+                                <li class="{{ Request::is('admin/videos') ? 'active' : '' }}"><a class="nav-link"
+                                        href="/admin/videos">Videos</a></li>
+                                <li class="{{ Request::is('admin/mentor') ? 'active' : '' }}"><a class="nav-link"
+                                        href="/admin/mentor">Mentor</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i>
+                        <li
+                            class="nav-item dropdown {{ Request::is('admin/admin') || Request::is('admin/users') ? 'active' : '' }}">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i>
                                 <span>Management Akun</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="/admin/admin">Admin</a></li>
-                                <li><a class="nav-link" href="/admin/users">Users</a></li>
+                                <li class="{{ Request::is('admin/admin') ? 'active' : '' }}"><a class="nav-link"
+                                        href="/admin/admin">Admin</a></li>
+                                <li class="{{ Request::is('admin/users') ? 'active' : '' }}"><a class="nav-link"
+                                        href="/admin/users">Users</a></li>
                             </ul>
                         </li>
                         <li class="menu-header">Data</li>
-                        <li class="">
+                        <li class="{{ Request::is('admin/dokumen') ? 'active' : '' }}">
                             <a class="nav-link" href="/admin/dokumen">
-                                <i class="fas fa-file"></i> <span>Dokumen</span>
+                                <i class="fas fa-folder-open"></i> <span>Data Dokumen</span>
                             </a>
                         </li>
                 </aside>

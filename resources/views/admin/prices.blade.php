@@ -14,6 +14,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-primary">
+                            <div class="card-header">
+                                <button class="btn btn-success" id="modal-1" data-title="Tambah Harga"><i
+                                        class="fas fa-plus"></i>
+                                    Tambah</button>
+                                <button class="btn btn-warning ml-1" id="modal-2" data-title="Ubah Deskripsi"><i
+                                        class="fas fa-pencil-alt"></i>
+                                    Ubah Deskripsi</button>
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table" id="data">
@@ -119,21 +127,26 @@
     <form class="modal-part" id="modal-form" method="POST" action="">
         @csrf
         <div class="form-group">
-            <label>Pertemuan</label>
-            <input type="text" class="form-control" placeholder="Pertemuan" name="pertemuan">
+            <label>Mata Pelajaran</label>
+            <input type="text" class="form-control" placeholder="Mata Pelajaran" name="pelajaran">
         </div>
         <div class="form-group">
-            <label>Materi</label>
-            <input type="text" class="form-control" placeholder="Materi" name="materi">
+            <label>Jam Pelajaran (T)</label>
+            <input type="text" class="form-control" placeholder="Jam Pelajaran (T)" name="jamT">
         </div>
         <div class="form-group">
-            <label>Jadwal</label>
-            <input type="text" class="form-control" placeholder="Jadwal" name="jadwal">
+            <label>Jam Pelajaran (P)</label>
+            <input type="text" class="form-control" placeholder="Jam Pelajaran (P)" name="jamP">
         </div>
+        <button class="d-none" id="fire-modal-1-submit"></button>
+    </form>
+    <form class="modal-part" id="modal-form-desk" method="POST" action="">
+        @csrf
         <div class="form-group">
-            <label>Link Kelas</label>
-            <input type="text" class="form-control" placeholder="Link Kelas" name="link">
+            <label>Deskrispsi</label>
+            <textarea type="text" class="form-control" placeholder="Deskripsi" name="deskrispsi" style="height: 100px"></textarea>
         </div>
+
         <button class="d-none" id="fire-modal-1-submit"></button>
     </form>
 @endsection

@@ -3,10 +3,10 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Belum Verifikasi</h1>
+                <h1>Admin</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="/admin/verif/belum">Payment</a></div>
-                    <div class="breadcrumb-item">Belum Verifikasi</div>
+                    <div class="breadcrumb-item active"><a href="/admin/admin">Management Akun</a></div>
+                    <div class="breadcrumb-item">Admin</div>
                 </div>
             </div>
             <!-- Main Content -->
@@ -15,8 +15,9 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <button class="btn btn-primary"><i class="fas fa-plane"></i>
-                                    Belum Verifikasi</button>
+                                <button class="btn btn-success" id="modal-1" data-title="Tambah Admin"><i
+                                        class="fas fa-plus"></i>
+                                    Tambah</button>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -24,46 +25,11 @@
                                         <thead>
                                             <th>No</th>
                                             <th>Detail Akun</th>
+                                            <th>Status Akun</th>
                                             <th>Tanggal Daftar</th>
-                                            <th>Tanggal Expired</th>
                                             <th>Aksi</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
                                             <tr>
                                                 <td>1</td>
                                                 <td>1</td>
@@ -118,20 +84,28 @@
     <form class="modal-part" id="modal-form" method="POST" action="">
         @csrf
         <div class="form-group">
-            <label>Pertemuan</label>
-            <input type="text" class="form-control" placeholder="Pertemuan" name="pertemuan">
+            <label>Nama</label>
+            <input type="text" class="form-control" placeholder="Nama" name="nama">
         </div>
         <div class="form-group">
-            <label>Materi</label>
-            <input type="text" class="form-control" placeholder="Materi" name="materi">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Username" name="username">
         </div>
         <div class="form-group">
-            <label>Jadwal</label>
-            <input type="text" class="form-control" placeholder="Jadwal" name="jadwal">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Email" name="email">
         </div>
         <div class="form-group">
-            <label>Link Kelas</label>
-            <input type="text" class="form-control" placeholder="Link Kelas" name="link">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+            <label>Konfirmasi Password</label>
+            <input type="password" class="form-control" name="password_confirmation">
+        </div>
+        <div class="form-group">
+            <label>No. HP</label>
+            <input type="text" class="form-control" placeholder="No. HP" name="noHp">
         </div>
         <button class="d-none" id="fire-modal-1-submit"></button>
     </form>

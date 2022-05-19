@@ -3,10 +3,10 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Belum Verifikasi</h1>
+                <h1>Users</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="/admin/verif/belum">Payment</a></div>
-                    <div class="breadcrumb-item">Belum Verifikasi</div>
+                    <div class="breadcrumb-item active"><a href="/admin/users">Management Akun</a></div>
+                    <div class="breadcrumb-item">Users</div>
                 </div>
             </div>
             <!-- Main Content -->
@@ -16,7 +16,7 @@
                         <div class="card card-primary">
                             <div class="card-header">
                                 <button class="btn btn-primary"><i class="fas fa-plane"></i>
-                                    Belum Verifikasi</button>
+                                    Users</button>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -24,46 +24,11 @@
                                         <thead>
                                             <th>No</th>
                                             <th>Detail Akun</th>
+                                            <th>Status Akun</th>
                                             <th>Tanggal Daftar</th>
-                                            <th>Tanggal Expired</th>
                                             <th>Aksi</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
                                             <tr>
                                                 <td>1</td>
                                                 <td>1</td>

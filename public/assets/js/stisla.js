@@ -12,7 +12,7 @@
                 closeButton: true,
                 header: true,
                 bodyClass: "",
-                footerClass: "",
+                footerClass: "bg-whitesmoke",
                 body: "",
                 buttons: [],
                 autoFocus: true,
@@ -35,7 +35,6 @@
 
             // Get modal body
             let body = options.body;
-            console.log(typeof body);
 
             if (typeof body == "object") {
                 if (body.length) {

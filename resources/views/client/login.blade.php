@@ -2,7 +2,7 @@
 @section('content')
     <div class="h-screen w-screen flex justify-center items-center bg-no-repeat bg-cover bg-center"
         style="background-image: url('{{ asset('img/bg.jpg') }}')">
-        <div class="w-full p-3 h-2/3 md:w-2/5 2xl:w-1/4 lg:w-2/5">
+        <div class="w-full p-3 md:h-2/3 h-4/5 md:w-2/5 2xl:w-1/4 lg:w-2/5">
             <div class="w-full h-full flex flex-col">
                 <div class="w-full">
                     <img src="{{ asset('img/logo.png') }}" alt="" class="w-40 mx-auto">

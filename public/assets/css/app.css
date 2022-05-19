@@ -553,6 +553,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full {
   height: 100%;
 }
+.h-4\/5 {
+  height: 80%;
+}
 .w-full {
   width: 100%;
 }
@@ -999,6 +1002,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-2\/3 {
+    height: 66.666667%;
   }
 
   .md\:w-2\/3 {

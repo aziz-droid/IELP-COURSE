@@ -15,7 +15,7 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <button class="btn btn-primary" id="modal-1"><i class="fas fa-plane"></i>
+                                <button class="btn btn-primary"><i class="fas fa-plane"></i>
                                     Sudah Verifikasi</button>
                             </div>
                             <div class="card-body">

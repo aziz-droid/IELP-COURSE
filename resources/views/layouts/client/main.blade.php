@@ -32,7 +32,7 @@
                         <a href="/contact">Contact</a>
                     </li>
                     <li class="my-4 hover:text-slate-300 transition ease-in">
-                        <a href="">Admin Page</a>
+                        <a href="/admin/dashboard">Admin Page</a>
                     </li>
                 </ul>
                 <button class="py-1 px-3 bg-slate-200 my-2 ml-3 md:ml-0 rounded hover:bg-slate-300 transition ease-in"
