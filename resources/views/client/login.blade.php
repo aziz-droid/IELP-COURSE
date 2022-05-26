@@ -9,7 +9,8 @@
                 </div>
                 <h2 class="text-center text-[#02669A] text-2xl font-semibold">IELP COURSE</h2>
                 <div class="w-full h-full mt-4 overflow-auto ">
-                    <form action="" class="bg-[#02669A] p-3 rounded">
+                    <form action="" class="bg-[#02669A] p-3 rounded" method="POST">
+                        @csrf
                         <label for="email" class="block text-white">Email Address</label>
                         <input type="email" id="email" name="email" class="w-full rounded py-1 px-2 mb-2">
                         <label for="password" class="block text-white">Password</label>
@@ -25,4 +26,9 @@
             </div>
         </div>
     </div>
+    <script>
+        @if (Session::has('error'))
+            var errorToast = '{{ session('error') }}'
+        @endif
+    </script>
 @endsection

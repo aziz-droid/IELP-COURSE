@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminClassController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MentorController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,24 +26,28 @@ Route::get('/', function () {
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
-Route::get('/admin/class', function () {
-    return view('admin.class');
-});
-Route::get('/admin/verif/belum', function () {
-    return view('admin.paymentbelum');
-});
-Route::get('/admin/verif/sudah', function () {
-    return view('admin.paymentsudah');
-});
-Route::get('/admin/prices', function () {
-    return view('admin.prices');
-});
-Route::get('/admin/videos', function () {
-    return view('admin.videos');
-});
-Route::get('/admin/mentor', function () {
-    return view('admin.mentor');
-});
+Route::get('/admin/class', [AdminClassController::class, 'index']);
+Route::get('/admin/class/{id}', [AdminClassController::class, 'getById']);
+Route::post('/admin/class', [AdminClassController::class, 'create']);
+Route::put('/admin/class/{classroom}', [AdminClassController::class, 'update']);
+Route::delete('/admin/class/{classroom}', [AdminClassController::class, 'delete']);
+Route::get('/admin/verif/belum', [PaymentController::class, 'index']);
+Route::put('/admin/verif/belum/{user}', [PaymentController::class, 'verifUpdate']);
+Route::get('/admin/verif/sudah', [PaymentController::class, 'sudahVerif']);
+Route::put('/admin/verif/sudah/{user}', [PaymentController::class, 'unverifUpdate']);
+Route::get('/admin/prices', [PriceController::class, 'index']);
+Route::get('/admin/prices/{id}', [PriceController::class, 'getById']);
+Route::post('/admin/prices', [PriceController::class, 'create']);
+Route::put('/admin/prices/{price}', [PriceController::class, 'update']);
+Route::delete('/admin/prices/{price}', [PriceController::class, 'delete']);
+Route::get('/admin/desc', [PriceController::class, 'getDesc']);
+Route::post('/admin/desc', [PriceController::class, 'updateDesc']);
+Route::get('/admin/videos', [VideoController::class, 'index']);
+Route::get('/admin/videos/{id}', [VideoController::class, 'getById']);
+Route::put('/admin/videos/{video}', [VideoController::class, 'update']);
+Route::delete('/admin/videos/{video}', [VideoController::class, 'delete']);
+Route::post('/admin/videos', [VideoController::class, 'create']);
+Route::get('/admin/mentor', [MentorController::class, 'index']);
 Route::get('/admin/admin', function () {
     return view('admin.admin');
 });
@@ -56,15 +66,12 @@ Route::get('/pricing', function () {
 Route::get('/contact', function () {
     return view('client.contact');
 });
-Route::get('/login', function () {
-    return view('client.login');
-});
-Route::get('/register', function () {
-    return view('client.register');
-});
-Route::get('/payment', function () {
-    return view('client.payment');
-});
+Route::get('/login', [AuthController::class, 'loginForm']);
+Route::post('/login', [AuthController::class, 'loginPost']);
+Route::get('/register', [AuthController::class, 'registerForm']);
+Route::post('/register', [AuthController::class, 'registerPost']);
+Route::get('/payment', [PaymentController::class, 'buktiShow']);
+Route::post('/payment/{user}', [PaymentController::class, 'buktiPost']);
 Route::get('/class', function () {
     return view('client.class');
 });
@@ -77,3 +84,4 @@ Route::get('/document', function () {
 Route::get('/videos', function () {
     return view('client.videos');
 });
+Route::get("/logout", [AuthController::class, "logout"]);

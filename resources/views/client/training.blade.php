@@ -2,7 +2,9 @@
 @section('client')
     <div class="container pt-24 md:pt-36 pb-6">
         <div class="flex flex-wrap">
-            <img src="{{ asset('img/plane1.jpg') }}" alt="" class="w-full">
+            <div class="w-full md:h-96 hidden md:block bg-center bg-no-repeat bg-cover"
+                style="background-image: url('{{ asset('img/plane1.jpg') }}')"></div>
+            <img src="{{ asset('img/plane1.jpg') }}" alt="" class="w-full md:hidden">
             <div class="w-full md:w-1/2 my-4 px-2 md:order-2">
                 <img src="{{ asset('img/image-training.png') }}" alt="" class="w-full border">
             </div>

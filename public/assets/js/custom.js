@@ -7,34 +7,89 @@
 
 "use strict";
 
-$("#modal-1").fireModal({
-    title: $("#modal-1").data("title"),
-    body: $("#modal-form"),
-    buttons: [
-        {
-            submit: true,
-            class: "btn btn-primary btn-shadow",
-            text: "Simpan",
-            id: "",
-            handler: () => {
-                $(this).submit();
-            },
+$(".edit").on("click", function (e) {
+    $("#exampleModal").addClass("modal-progress");
+    $.ajax({
+        url: `/admin/class/${$(this).data("id")}`,
+        type: "GET",
+        dataType: "json",
+        success: (data) => {
+            $("#exampleModal").removeClass("modal-progress");
+            $("#pertemuan").val(data.pertemuan);
+            $("#jadwal").val(data.jadwal);
+            $("#link").val(data.link);
+            $("#materi").val(data.materi);
+            $("#method").attr("name", "_method");
+            $("#method").val("PUT");
+            $("form").attr("action", `/admin/class/${$(this).data("id")}`);
         },
-    ],
+    });
 });
-$("#modal-2").fireModal({
-    title: $("#modal-2").data("title"),
-    body: $("#modal-form-desk"),
-    buttons: [
-        {
-            submit: true,
-            class: "btn btn-primary btn-shadow",
-            text: "Simpan",
-            id: "",
-            handler: () => {
-                $(this).submit();
-            },
+$(".editPrice").on("click", function (e) {
+    $("#exampleModal").addClass("modal-progress");
+    $.ajax({
+        url: `/admin/prices/${$(this).data("id")}`,
+        type: "GET",
+        dataType: "json",
+        success: (data) => {
+            $("#exampleModal").removeClass("modal-progress");
+            $("#pelajaran").val(data.pelajaran);
+            $("#jamT").val(data.jamT);
+            $("#jamP").val(data.jamP);
+            $("#method").attr("name", "_method");
+            $("#method").val("PUT");
+            $("#form").attr("action", `/admin/prices/${$(this).data("id")}`);
         },
-    ],
+    });
+});
+$(".editVideo").on("click", function (e) {
+    $("#exampleModal").addClass("modal-progress");
+    $.ajax({
+        url: `/admin/videos/${$(this).data("id")}`,
+        type: "GET",
+        dataType: "json",
+        success: (data) => {
+            $("#exampleModal").removeClass("modal-progress");
+            $("#judul").val(data.judul);
+            $("#link").val(data.link);
+            $("#method").attr("name", "_method");
+            $("#method").val("PUT");
+            $("form").attr("action", `/admin/videos/${$(this).data("id")}`);
+        },
+    });
+});
+
+$(document).ready(function () {
+    var attr = $("table").attr("style");
+
+    // For some browsers, `attr` is undefined; for others,
+    // `attr` is false.  Check for both.
+    if (typeof attr !== "undefined" && attr !== false) {
+        $("table").attr("style", "");
+    }
+});
+
+$("#exampleModal").on("hidden.bs.modal", function () {
+    $("form").trigger("reset");
+    $("form").attr("action", ``);
+    $("#method").attr("name", "");
+    $("#method").val("");
+    $("#id").attr("name", "");
+    $("#id").val("");
 });
 $("#data").DataTable();
+if (typeof errorToast !== "undefined") {
+    if (errorToast != "") {
+        toastr.error(errorToast);
+    }
+}
+if (typeof successToast !== "undefined") {
+    if (successToast != "") {
+        toastr.success(successToast);
+    }
+}
+if (typeof warnToast !== "undefined") {
+    if (warnToast != "") {
+        toastr.warning(warnToast);
+    }
+}

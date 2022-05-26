@@ -1,5 +1,8 @@
 @extends('layouts.admin.main')
 @section('admin')
+    @php
+    $i = 1;
+    @endphp
     <div class="main-content">
         <section class="section">
             <div class="section-header">
@@ -15,8 +18,8 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <button class="btn btn-success" id="modal-1" data-title="Tambah Mentor"><i
-                                        class="fas fa-plus"></i>
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#exampleModal"><i class="fas fa-plus"></i>
                                     Tambah</button>
                             </div>
                             <div class="card-body">
@@ -30,48 +33,28 @@
                                             <th>Aksi</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
+                                            @foreach ($data as $d)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $d->name }}</td>
+                                                    <td>{{ $d->biodata }}</td>
+                                                    <td>
+                                                        <img src="{{ asset('uploads/mentor/' . $d->foto) }}" alt=""
+                                                            style="width: 100px">
+                                                    </td>
+                                                    <td class="d-flex">
+                                                        <button class="btn btn-warning mr-2 editMentor"
+                                                            data-id="{{ $d->id }}" data-toggle="modal"
+                                                            data-target="#exampleModal">Edit</button>
+                                                        <form action="/admin/mentor/{{ $d->id }}" method="post"
+                                                            onsubmit="return confirm('Apakah Anda yakin menghapus Item ini ?')">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -81,20 +64,51 @@
                 </div>
         </section>
     </div>
-    <form class="modal-part" id="modal-form" method="POST" action="">
-        @csrf
-        <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Kelola Mentor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="" id="form" method="POST" action="" enctype="multipart/form-data">
+                        <input type="hidden" name="" id="method">
+                        @csrf
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap">
+                        </div>
+                        <div class="form-group">
+                            <label>Biodata</label>
+                            <input type="text" class="form-control" placeholder="Biodata" name="biodata">
+                        </div>
+                        <div class="form-group">
+                            <label>Foto</label>
+                            <input type="file" class="form-control" name="foto">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Materi</label>
-            <input type="text" class="form-control" placeholder="Biodata" name="biodata">
-        </div>
-        <div class="form-group">
-            <label>Foto</label>
-            <input type="file" class="form-control" name="foto">
-        </div>
-        <button class="d-none" id="fire-modal-1-submit"></button>
-    </form>
+    </div>
+
+    <script>
+        @if (Session::has('error'))
+            var errorToast = '{{ session('error') }}'
+        @endif
+        @if (Session::has('success'))
+            var successToast = '{{ session('success') }}'
+        @endif
+        @if (Session::has('warning'))
+            var warnToast = '{{ session('warning') }}'
+        @endif
+    </script>
 @endsection
