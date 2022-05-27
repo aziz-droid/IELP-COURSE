@@ -58,6 +58,39 @@ $(".editVideo").on("click", function (e) {
         },
     });
 });
+$(".editMentor").on("click", function (e) {
+    $("#exampleModal").addClass("modal-progress");
+    $.ajax({
+        url: `/admin/mentor/${$(this).data("id")}`,
+        type: "GET",
+        dataType: "json",
+        success: (data) => {
+            $("#exampleModal").removeClass("modal-progress");
+            $("#name").val(data.name);
+            $("#biodata").val(data.biodata);
+            $("#method").attr("name", "_method");
+            $("#method").val("PUT");
+            $("form").attr("action", `/admin/mentor/${$(this).data("id")}`);
+        },
+    });
+});
+$(".editAdmin").on("click", function (e) {
+    $("#exampleModal").addClass("modal-progress");
+    $.ajax({
+        url: `/admin/admin/${$(this).data("id")}`,
+        type: "GET",
+        dataType: "json",
+        success: (data) => {
+            $("#exampleModal").removeClass("modal-progress");
+            $("#name").val(data.name);
+            $("#email").val(data.email);
+            $("#noHp").val(data.noHp);
+            $("#method").attr("name", "_method");
+            $("#method").val("PUT");
+            $("form").attr("action", `/admin/admin/${$(this).data("id")}`);
+        },
+    });
+});
 
 $(document).ready(function () {
     var attr = $("table").attr("style");

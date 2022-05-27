@@ -84,7 +84,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .bg-secondary {
-    background-color: #cdd3d8 !important;
+    background-color: #93aec5 !important;
 }
 
 .bg-success {
@@ -122,7 +122,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .text-secondary-all *,
 .text-secondary-all *:before,
 .text-secondary-all *:after {
-    color: #cdd3d8 !important;
+    color: #93aec5 !important;
 }
 
 .text-success,
@@ -676,7 +676,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .list-group-item-secondary {
-    background-color: #cdd3d8;
+    background-color: #93aec5;
     color: #fff;
 }
 
@@ -753,7 +753,7 @@ select.form-control:not([size]):not([multiple]) {
     background-color: #005ca1;
 }
 .alert.alert-secondary {
-    background-color: #cdd3d8;
+    background-color: #93aec5;
 }
 .alert.alert-success {
     background-color: #47c363;
@@ -963,7 +963,7 @@ select.form-control:not([size]):not([multiple]) {
     border-top: 2px solid #005ca1;
 }
 .card.card-secondary {
-    border-top: 2px solid #cdd3d8;
+    border-top: 2px solid #93aec5;
 }
 .card.card-success {
     border-top: 2px solid #47c363;
@@ -1476,7 +1476,7 @@ table tr:hover .table-links {
     background-color: #005ca1;
 }
 .badge.badge-secondary {
-    background-color: #cdd3d8;
+    background-color: #93aec5;
 }
 .badge.badge-success {
     background-color: #47c363;
@@ -1663,8 +1663,8 @@ h6 .badge {
 .btn-secondary,
 .btn-secondary.disabled {
     box-shadow: 0 2px 6px #e1e5e8;
-    background-color: #cdd3d8;
-    border-color: #cdd3d8;
+    background-color: #93aec5;
+    border-color: #93aec5;
     color: #fff;
 }
 .btn-secondary:hover,
@@ -1683,7 +1683,7 @@ h6 .badge {
 .btn-outline-secondary.disabled:hover,
 .btn-outline-secondary.disabled:focus,
 .btn-outline-secondary.disabled:active {
-    background-color: #cdd3d8 !important;
+    background-color: #93aec5 !important;
     color: #fff !important;
 }
 
@@ -4123,4 +4123,9 @@ body:not(.sidebar-mini)
         -webkit-transform: scale(1.2, 1.2);
         opacity: 0;
     }
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }

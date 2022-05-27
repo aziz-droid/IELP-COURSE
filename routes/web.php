@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,12 +49,17 @@ Route::put('/admin/videos/{video}', [VideoController::class, 'update']);
 Route::delete('/admin/videos/{video}', [VideoController::class, 'delete']);
 Route::post('/admin/videos', [VideoController::class, 'create']);
 Route::get('/admin/mentor', [MentorController::class, 'index']);
-Route::get('/admin/admin', function () {
-    return view('admin.admin');
-});
-Route::get('/admin/users', function () {
-    return view('admin.users');
-});
+Route::get('/admin/mentor/{mentor}', [MentorController::class, 'getById']);
+Route::put('/admin/mentor/{mentor}', [MentorController::class, 'update']);
+Route::delete('/admin/mentor/{mentor}', [MentorController::class, 'delete']);
+Route::post('/admin/mentor', [MentorController::class, 'create']);
+Route::get('/admin/admin', [UserController::class, 'admin']);
+Route::get('/admin/admin/{user}', [UserController::class, 'getById']);
+Route::put('/admin/admin/{user}', [UserController::class, 'update']);
+Route::delete('/admin/admin/{user}', [UserController::class, 'delete']);
+Route::post('/admin/admin', [UserController::class, 'create']);
+Route::get('/admin/users', [UserController::class, 'user']);
+Route::delete('/admin/users/{user}', [UserController::class, 'deleteUser']);
 Route::get('/admin/dokumen', function () {
     return view('admin.dokumen');
 });

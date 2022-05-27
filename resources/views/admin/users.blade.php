@@ -1,5 +1,8 @@
 @extends('layouts.admin.main')
 @section('admin')
+    @php
+    $i = 1;
+    @endphp
     <div class="main-content">
         <section class="section">
             <div class="section-header">
@@ -29,48 +32,28 @@
                                             <th>Aksi</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
+                                            @foreach ($data as $d)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>
+                                                        <p class="m-0">Nama : {{ $d->name }}</p>
+                                                        <p class="m-0">Email : {{ $d->email }}</p>
+                                                        <p class="m-0">Alamat : {{ $d->address }}</p>
+                                                        <p class="m-0">No. HP : {{ $d->noHp }}</p>
+                                                        <p class="m-0">Profesi : {{ $d->profesi }}</p>
+                                                    </td>
+                                                    <td>{{ $d->verified }}</td>
+                                                    <td>{{ $d->created_at }}</td>
+                                                    <td class="d-flex">
+                                                        <form action="/admin/users/{{ $d->id }}" method="post"
+                                                            onsubmit="return confirm('Apakah Anda yakin menghapus Item ini ?')">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger" type="submit">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -80,24 +63,9 @@
                 </div>
         </section>
     </div>
-    <form class="modal-part" id="modal-form" method="POST" action="">
-        @csrf
-        <div class="form-group">
-            <label>Pertemuan</label>
-            <input type="text" class="form-control" placeholder="Pertemuan" name="pertemuan">
-        </div>
-        <div class="form-group">
-            <label>Materi</label>
-            <input type="text" class="form-control" placeholder="Materi" name="materi">
-        </div>
-        <div class="form-group">
-            <label>Jadwal</label>
-            <input type="text" class="form-control" placeholder="Jadwal" name="jadwal">
-        </div>
-        <div class="form-group">
-            <label>Link Kelas</label>
-            <input type="text" class="form-control" placeholder="Link Kelas" name="link">
-        </div>
-        <button class="d-none" id="fire-modal-1-submit"></button>
-    </form>
+    <script>
+        @if (Session::has('warning'))
+            var warnToast = '{{ session('warning') }}'
+        @endif
+    </script>
 @endsection

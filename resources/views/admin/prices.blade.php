@@ -86,7 +86,8 @@
                         <div class="form-group">
                             <label>Mata Pelajaran</label>
                             <input type="text" class="form-control @error('pelajaran') is-invalid @enderror"
-                                placeholder="Mata Pelajaran" name="pelajaran" id="pelajaran">
+                                placeholder="Mata Pelajaran" name="pelajaran" id="pelajaran"
+                                value="{{ old('pelajaran') }}">
                             @error('pelajaran')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -96,7 +97,7 @@
                         <div class="form-group">
                             <label>Jam Pelajaran (T)</label>
                             <input type="text" class="form-control @error('jamT') is-invalid @enderror"
-                                placeholder="Jam Pelajaran (T)" name="jamT" id="jamT">
+                                placeholder="Jam Pelajaran (T)" name="jamT" id="jamT" value="{{ old('jamT') }}">
                             @error('jamT')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -106,7 +107,7 @@
                         <div class="form-group">
                             <label>Jam Pelajaran (P)</label>
                             <input type="text" class="form-control @error('jamP') is-invalid @enderror"
-                                placeholder="Jam Pelajaran (P)" name="jamP" id="jamP">
+                                placeholder="Jam Pelajaran (P)" name="jamP" id="jamP" value="{{ old('jamP') }}">
                             @error('jamP')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -141,7 +142,7 @@
                             <label>Deskripsi</label>
                             <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi"
                                 name="deskripsi" style="height: 100px"
-                                id="deskripsi">{{ $desc->deskripsi }}</textarea>
+                                id="deskripsi">{{ $desc->deskripsi }}{{ old('deskripsi') }}</textarea>
                             @error('deskripsi')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -151,7 +152,8 @@
                         <div class="form-group">
                             <label>Tanggal Mulai Kelas</label>
                             <input type="text" class="form-control datepicker @error('dateMulai') is-invalid @enderror"
-                                placeholder="" name="dateMulai" id="dateMulai" value="{{ $desc->dateMulai }}">
+                                placeholder="" name="dateMulai" id="dateMulai"
+                                value="{{ $desc->dateMulai }}{{ old('dateMulai') }}">
                             @error('dateMulai')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -161,7 +163,8 @@
                         <div class="form-group">
                             <label>Tanggal Akhir Kelas</label>
                             <input type="text" class="form-control datepicker @error('dateAkhir') is-invalid @enderror"
-                                placeholder="" name="dateAkhir" id="dateAkhir" value="{{ $desc->dateAkhir }}">
+                                placeholder="" name="dateAkhir" id="dateAkhir"
+                                value="{{ $desc->dateAkhir }}{{ old('dateAkhir') }}">
                             @error('dateAkhir')
                                 <div class="invalid-feedback">
                                     {{ $message }}

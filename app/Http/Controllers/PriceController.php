@@ -24,7 +24,7 @@ class PriceController extends Controller
             'jamP' => 'required',
         ]);
         if ($validated->fails()) {
-            return redirect('/admin/prices')->witheErrors($validated)->withInput()->with('error', 'Terjadi kesalahan memasukkan data');
+            return redirect('/admin/prices')->withErrors($validated)->withInput()->with('error', 'Terjadi kesalahan memasukkan data');
         }
         Price::create($request->all());
         return redirect('/admin/prices')->with('success', 'Data berhasil dimasukkan');
