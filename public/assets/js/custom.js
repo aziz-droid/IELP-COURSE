@@ -91,7 +91,23 @@ $(".editAdmin").on("click", function (e) {
         },
     });
 });
-
+$(".editDokumen").on("click", function (e) {
+    $("#exampleModal").addClass("modal-progress");
+    $.ajax({
+        url: `/admin/dokumen/${$(this).data("id")}`,
+        type: "GET",
+        dataType: "json",
+        success: (data) => {
+            $("#exampleModal").removeClass("modal-progress");
+            $("#nama").val(data.nama);
+            $("#namaFile").html(data.file);
+            $("#namaFile").removeClass("d-none");
+            $("#method").attr("name", "_method");
+            $("#method").val("PUT");
+            $("form").attr("action", `/admin/dokumen/${$(this).data("id")}`);
+        },
+    });
+});
 $(document).ready(function () {
     var attr = $("table").attr("style");
 
@@ -109,6 +125,7 @@ $("#exampleModal").on("hidden.bs.modal", function () {
     $("#method").val("");
     $("#id").attr("name", "");
     $("#id").val("");
+    $("#namaFile").addClass("d-none");
 });
 $("#data").DataTable();
 if (typeof errorToast !== "undefined") {

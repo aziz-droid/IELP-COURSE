@@ -45,4 +45,8 @@ class VideoController extends Controller
         $video->delete();
         return redirect('/admin/videos')->with('warning', 'Data berhasil dihapus');
     }
+    public function pesertaIndex()
+    {
+        return view('client.videos', ['data' => Video::all()]);
+    }
 }

@@ -56,7 +56,11 @@ class AuthController extends Controller
             ) {
                 return redirect()->intended("/admin/dashboard");
             }
-            return redirect()->intended("/payment");
+            if (Auth::user()->verified == "Belum Verifikasi") {
+                return redirect()->intended("/payment");
+            } else {
+                return redirect()->intended("/class");
+            }
         }
         return back()->with("error", "Login gagal!");
     }

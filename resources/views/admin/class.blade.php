@@ -101,7 +101,7 @@
                         </div>
                         <div class="form-group">
                             <label>Jadwal</label>
-                            <input type="text" class="form-control datepicker @error('jadwal') is-invalid @enderror"
+                            <input type="text" class="form-control datetimepicker @error('jadwal') is-invalid @enderror"
                                 placeholder="Jadwal" name="jadwal" id="jadwal">
                             @error('jadwal')
                                 <div class="invalid-feedback">

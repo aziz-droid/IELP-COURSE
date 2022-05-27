@@ -20,13 +20,13 @@
                 @if (Auth::check())
                     @if (Auth::user()->role == 'peserta' && Auth::user()->verified == 'Sudah Verifikasi')
                         <li class="hover:text-slate-300 transition ease-in">
-                            <a href="./">Class</a>
+                            <a href="/class">Class</a>
                         </li>
                         <li class="hover:text-slate-300 transition ease-in">
-                            <a href="/training">Document</a>
+                            <a href="/document">Document</a>
                         </li>
                         <li class="hover:text-slate-300 transition ease-in">
-                            <a href="/pricing">Videos</a>
+                            <a href="/videos">Videos</a>
                         </li>
                     @else
                         <li class="hover:text-slate-300 transition ease-in">
@@ -66,13 +66,15 @@
             </ul>
             @if (Auth::check())
                 <div class="hidden md:block">
-                    <div class="flex items-center cursor-pointer my-4 relative" id="profile">
+                    <div class="flex items-center cursor-pointer my-4 relative profile">
                         <img src="{{ asset('img/icons/user.png') }}" alt="" class="w-8">
                         <p class="ml-2 text-white">{{ Auth::user()->name }}&nbsp; <i class="fas fa-angle-down"></i></p>
                     </div>
-                    <div class="text-white absolute top-full pb-3 px-14 md:pl-10 w-full md:w-max left-0 md:left-auto bg-[#02669A]  hidden"
-                        id="dropdown">
-                        <a href="/class" class="block hover:text-slate-400 my-2">Class</a>
+                    <div
+                        class="text-white absolute top-full pb-3 px-14 md:pl-10 w-full md:w-max left-0 md:left-auto bg-[#02669A]  hidden dropdown">
+                        @if (Auth::user()->verified == 'Sudah Verifikasi')
+                            <a href="/class" class="block hover:text-slate-400 my-2">Class</a>
+                        @endif
                         <a href="/logout" class="block hover:text-slate-400 my-2">Logout</a>
                     </div>
                 </div>
@@ -85,38 +87,75 @@
         <div id="nav"
             class="absolute z-[-1] opacity-0 top-[-400px] w-full transition-all ease-in duration-500 left-0 pl-6 py-3 bg-[#02669A]">
             <ul class="flex flex-col gap-10 text-white text-lg md:hidden">
-                <li class="hover:text-slate-300 transition ease-in">
-                    <a href="./">About</a>
-                </li>
-                <li class="hover:text-slate-300 transition ease-in">
-                    <a href="/training">Training</a>
-                </li>
-                <li class="hover:text-slate-300 transition ease-in">
-                    <a href="/pricing">Pricing</a>
-                </li>
+                @if (Auth::check())
+                    @if (Auth::user()->role == 'peserta' && Auth::user()->verified == 'Sudah Verifikasi')
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/class">Class</a>
+                        </li>
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/document">Document</a>
+                        </li>
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/videos">Videos</a>
+                        </li>
+                    @else
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="./">About</a>
+                        </li>
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/training">Training</a>
+                        </li>
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/payment">Payment</a>
+                        </li>
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/pricing">Pricing</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="hover:text-slate-300 transition ease-in">
+                        <a href="./">About</a>
+                    </li>
+                    <li class="hover:text-slate-300 transition ease-in">
+                        <a href="/training">Training</a>
+                    </li>
+                    <li class="hover:text-slate-300 transition ease-in">
+                        <a href="/pricing">Pricing</a>
+                    </li>
+                @endif
                 <li class="hover:text-slate-300 transition ease-in">
                     <a href="/contact">Contact</a>
                 </li>
-                <li class="hover:text-slate-300 transition ease-in">
-                    <a href="/admin/dashboard">Admin Page</a>
-                </li>
-                <li>
-                    <button class="py-1 px-3 bg-slate-200 rounded text-black hover:bg-slate-300 transition ease-in"
-                        type="button"><a href="/login">Login/Register</a></button>
-                </li>
-                {{-- <li class="md:hidden">
-                    <div class="">
-                        <div class="flex items-center cursor-pointer my-4 relative" id="profile">
-                            <img src="{{ asset('img/icons/user.png') }}" alt="" class="w-8">
-                            <p class="ml-2 text-white">Abdul Kodir&nbsp; <i class="fas fa-angle-down"></i></p>
+                @if (Auth::check())
+                    @if (Auth::user()->role == 'admin')
+                        <li class="hover:text-slate-300 transition ease-in">
+                            <a href="/admin/dashboard">Admin Page</a>
+                        </li>
+                    @endif
+                @endif
+                @if (Auth::check())
+                    <li class="md:hidden">
+                        <div class="">
+                            <div class="flex items-center cursor-pointer my-4 relative profile">
+                                <img src="{{ asset('img/icons/user.png') }}" alt="" class="w-8">
+                                <p class="ml-2 text-white">{{ Auth::user()->name }}&nbsp; <i
+                                        class="fas fa-angle-down"></i></p>
+                            </div>
+                            <div
+                                class="text-white absolute top-full pb-3 px-14 md:pl-10 w-full md:w-max left-0 md:left-auto bg-[#02669A]  hidden dropdown">
+                                @if (Auth::user()->verified == 'Sudah Verifikasi')
+                                    <a href="/class" class="block hover:text-slate-400 my-2">Class</a>
+                                @endif
+                                <a href="" class="block hover:text-slate-400 my-2">Logout</a>
+                            </div>
                         </div>
-                        <div class="text-white absolute top-full pb-3 px-14 md:pl-10 w-full md:w-max left-0 md:left-auto bg-[#02669A]  hidden"
-                            id="dropdown">
-                            <a href="/class" class="block hover:text-slate-400 my-2">Class</a>
-                            <a href="" class="block hover:text-slate-400 my-2">Logout</a>
-                        </div>
-                    </div>
-                </li> --}}
+                    </li>
+                @else
+                    <li>
+                        <button class="py-1 px-3 bg-slate-200 rounded text-black hover:bg-slate-300 transition ease-in"
+                            type="button"><a href="/login">Login/Register</a></button>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>

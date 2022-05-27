@@ -36,7 +36,9 @@
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
                                                     <td>{{ $d->judul }}</td>
-                                                    <td>{{ $d->link }}</td>
+                                                    <td>
+                                                        <div class="">{!! $d->link !!}</div>
+                                                    </td>
                                                     <td class="d-flex">
                                                         <button class="btn btn-warning mr-2 editVideo"
                                                             data-id="{{ $d->id }}" data-toggle="modal"
