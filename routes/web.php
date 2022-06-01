@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\AdminClassController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DokumenController;
-use App\Http\Controllers\MentorController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PesertaClassController;
-use App\Http\Controllers\PriceController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VideoController;
+use App\Models\Price;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\MentorController;
+use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AdminClassController;
+use App\Http\Controllers\PesertaClassController;
+use App\Models\Description;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +64,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/admin/videos/{video}', [VideoController::class, 'update']);
         Route::delete('/admin/videos/{video}', [VideoController::class, 'delete']);
         Route::post('/admin/videos', [VideoController::class, 'create']);
-        Route::get('/admin/mentor', [MentorController::class, 'index']);
-        Route::get('/admin/mentor/{mentor}', [MentorController::class, 'getById']);
-        Route::put('/admin/mentor/{mentor}', [MentorController::class, 'update']);
-        Route::delete('/admin/mentor/{mentor}', [MentorController::class, 'delete']);
-        Route::post('/admin/mentor', [MentorController::class, 'create']);
         Route::get('/admin/admin', [UserController::class, 'admin']);
         Route::get('/admin/admin/{user}', [UserController::class, 'getById']);
         Route::put('/admin/admin/{user}', [UserController::class, 'update']);
@@ -89,7 +86,10 @@ Route::get('/training', function () {
     return view('client.training');
 });
 Route::get('/pricing', function () {
-    return view('client.pricing');
+    return view('client.pricing', [
+        'price' => Price::all(),
+        'desc' => Description::find(1),
+    ]);
 });
 Route::get('/contact', function () {
     return view('client.contact');
