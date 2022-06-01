@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Description;
 use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
@@ -28,13 +29,17 @@ class AuthController extends Controller
         $validated['password'] = Hash::make($validated['password']);
         $validated['role'] = 'peserta';
         try {
+            $date = Description::find(1);
+            if ($date->dateMulai < today()) {
+                return redirect('/login')->with('error', 'Mohon maaf, batas waktu pendaftaran telah terlewat');
+            }
             $createdUser = User::create($validated);
             Payment::create([
                 'user_id' => $createdUser['id'],
                 'expired' => Carbon::today()->addDays(7)->toDateString()
             ]);
             Auth::login($createdUser);
-            return redirect()->intended('/payment');
+            return redirect()->intended('/');
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -57,7 +62,7 @@ class AuthController extends Controller
                 return redirect()->intended("/admin/dashboard");
             }
             if (Auth::user()->verified == "Belum Verifikasi") {
-                return redirect()->intended("/payment");
+                return redirect()->intended("/");
             } else {
                 return redirect()->intended("/class");
             }
