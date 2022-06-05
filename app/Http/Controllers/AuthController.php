@@ -31,7 +31,7 @@ class AuthController extends Controller
         try {
             $date = Description::find(1);
             if ($date->dateMulai < today()) {
-                return redirect('/login')->with('error', 'Mohon maaf, batas waktu pendaftaran telah terlewat');
+                return redirect('/login')->with('error', 'Mohon maaf, sekarang kelas sedang berlangsung. Tunggu kelas berikutnya ya!');
             }
             $createdUser = User::create($validated);
             Payment::create([

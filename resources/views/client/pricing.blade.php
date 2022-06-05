@@ -47,10 +47,10 @@
         </div>
         <div class="w-full my-4 text-center lg:w-2/3 lg:mx-auto">
           {{ $desc->deskripsi }}<br />
+          <a href="{{ asset('uploads/icaodescriptors.pdf') }}" class="text-blue-600">Download Document
+            Silabus IELP Course</a><br />
           Tanggal Mulai : {{ $desc->dateMulai }}<br />
           Tanggal Akhir : {{ $desc->dateAkhir }}<br />
-          <a href="" class="text-blue-600 underline">Document
-            Silabus IELP Course</a>
         </div>
         <div class="w-min my-6 whitespace-nowrap mx-auto">
           <a href="/login" class="py-2 px-32 rounded bg-[#02669A] text-white">Daftar Kursus</a>

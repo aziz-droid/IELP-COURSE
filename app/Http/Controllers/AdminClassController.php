@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class AdminClassController extends Controller
@@ -15,17 +17,29 @@ class AdminClassController extends Controller
     }
     public function create(Request $request)
     {
-        $validated = Validator::make($request->all(), [
+        $arrValidated = [
             'pertemuan' => 'required',
             'materi' => 'required',
             'jadwal' => 'required',
             'link' => 'required'
-        ]);
+        ];
+        if ($request->hasFile("dokumen")) {
+            $arrValidated['dokumen'] = 'mimes:pdf|max:2048';
+        }
+        if (!empty($request->youtube)) {
+            $arrValidated['youtube'] = 'url';
+        }
+        $validated = Validator::make($request->all(), $arrValidated);
         if ($validated->fails()) {
             return redirect('/admin/class')->withErrors($validated)->withInput()->with('error', 'Terjadi kesalahan memasukkan data');
         }
-
-        Classroom::create($request->all());
+        $req = $request->all();
+        if ($request->hasFile("dokumen")) {
+            $fileName = $request->dokumen->getClientOriginalName() . '_' . time() . '.' . $request->dokumen->extension();
+            $request->dokumen->move(public_path('assets/uploads/pdf'), $fileName);
+            $req['dokumen'] = $fileName;
+        }
+        Classroom::create($req);
         return redirect('/admin/class')->with('success', 'Data berhasil ditambahkan');
     }
     public function getById($id)
@@ -34,21 +48,49 @@ class AdminClassController extends Controller
     }
     public function update(Classroom $classroom, Request $request)
     {
-        $validated = Validator::make($request->all(), [
+
+        $arrValidated = [
             'pertemuan' => 'required',
             'materi' => 'required',
             'jadwal' => 'required',
             'link' => 'required'
-        ]);
+        ];
+        if ($request->hasFile("dokumen")) {
+            $arrValidated['dokumen'] = 'mimes:pdf|max:2048';
+        }
+        if (!empty($request->youtube)) {
+            $arrValidated['youtube'] = 'url';
+        }
+        $validated = Validator::make($request->all(), $arrValidated);
         if ($validated->fails()) {
             return redirect('/admin/class')->withErrors($validated)->withInput()->with('error', 'Terjadi kesalahan memasukkan data');
         }
-        $classroom->update($request->all());
+        $req = $request->all();
+        if ($request->hasFile("dokumen")) {
+            $filePath = public_path('assets/uploads/pdf/' . $classroom->dokumen);
+            if (File::exists($filePath)) {
+                unlink($filePath);
+                $fileName = $request->dokumen->getClientOriginalName() . '_' . time() . '.' . $request->dokumen->extension();
+                $request->dokumen->move(public_path('assets/uploads/pdf'), $fileName);
+                $req['dokumen'] = $fileName;
+            }
+        }
+        $classroom->update($req);
         return redirect('/admin/class')->with('warning', 'Data berhasil diubah');
     }
     public function delete(Classroom $classroom)
     {
-        $classroom->delete();
+        try {
+            //code...
+            $filePath = public_path('assets/uploads/pdf/' . $classroom->dokumen);
+            if (File::exists($filePath)) {
+                unlink($filePath);
+            }
+            $classroom->delete();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect('/admin/class')->with('error', 'Terjadi kesalahan menghapus data');
+        }
         return redirect('/admin/class')->with('warning', 'Data berhasil dihapus');
     }
 }

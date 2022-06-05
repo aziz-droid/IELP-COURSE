@@ -59,6 +59,10 @@ class DokumenController extends Controller
     }
     public function delete(Document $document)
     {
+        $filePath = public_path('assets/uploads/pdf/' . $document->file);
+        if (File::exists($filePath)) {
+            unlink($filePath);
+        }
         $document->delete();
         return redirect('/admin/dokumen')->with('warning', 'Data berhasil dihapus');
     }

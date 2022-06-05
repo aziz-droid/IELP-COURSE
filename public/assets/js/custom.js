@@ -19,6 +19,9 @@ $(".edit").on("click", function (e) {
             $("#jadwal").val(data.jadwal);
             $("#link").val(data.link);
             $("#materi").val(data.materi);
+            $("#namaFile").removeClass("d-none");
+            $("#namaFile").html(data.dokumen);
+            $("#youtube").val(data.youtube);
             $("#method").attr("name", "_method");
             $("#method").val("PUT");
             $("form").attr("action", `/admin/class/${$(this).data("id")}`);
