@@ -22,7 +22,7 @@ class DokumenController extends Controller
         if ($validated->fails()) {
             return redirect('/admin/dokumen')->withErrors($validated)->withInput()->with('error', 'Terjadi kesalahan memasukkan data');
         }
-        $fileName = $request->file->getClientOriginalName() . '_' . time() . '.' . $request->file->extension();
+        $fileName = time() . '_' . $request->file->getClientOriginalName();
         $request->file->move(public_path('assets/uploads/pdf'), $fileName);
         $req = $request->all();
         $req['file'] = $fileName;
@@ -49,7 +49,7 @@ class DokumenController extends Controller
             $filePath = public_path('assets/uploads/pdf/' . $document->file);
             if (File::exists($filePath)) {
                 unlink($filePath);
-                $fileName = $request->file->getClientOriginalName() . '_' . time() . '.' . $request->file->extension();
+                $fileName = time() . '_' . $request->file->getClientOriginalName();
                 $request->file->move(public_path('assets/uploads/pdf'), $fileName);
                 $req['file'] = $fileName;
             }
