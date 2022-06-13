@@ -48,4 +48,9 @@ class PaymentController extends Controller
     {
         return view('client.payment');
     }
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect('/admin/verif/belum')->with('warning', 'Data berhasil dihapus!');
+    }
 }

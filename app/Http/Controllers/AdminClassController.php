@@ -35,7 +35,7 @@ class AdminClassController extends Controller
         }
         $req = $request->all();
         if ($request->hasFile("dokumen")) {
-            $fileName = $request->dokumen->getClientOriginalName() . '_' . time() . '.' . $request->dokumen->extension();
+            $fileName = time() . '_' . $request->dokumen->getClientOriginalName();
             $request->dokumen->move(public_path('assets/uploads/pdf'), $fileName);
             $req['dokumen'] = $fileName;
         }
@@ -48,7 +48,6 @@ class AdminClassController extends Controller
     }
     public function update(Classroom $classroom, Request $request)
     {
-
         $arrValidated = [
             'pertemuan' => 'required',
             'materi' => 'required',
@@ -70,7 +69,7 @@ class AdminClassController extends Controller
             $filePath = public_path('assets/uploads/pdf/' . $classroom->dokumen);
             if (File::exists($filePath)) {
                 unlink($filePath);
-                $fileName = $request->dokumen->getClientOriginalName() . '_' . time() . '.' . $request->dokumen->extension();
+                $fileName = time() . '_' . $request->dokumen->getClientOriginalName();
                 $request->dokumen->move(public_path('assets/uploads/pdf'), $fileName);
                 $req['dokumen'] = $fileName;
             }
@@ -83,7 +82,7 @@ class AdminClassController extends Controller
         try {
             //code...
             $filePath = public_path('assets/uploads/pdf/' . $classroom->dokumen);
-            if (File::exists($filePath)) {
+            if (is_null($classroom->dokumen)) {
                 unlink($filePath);
             }
             $classroom->delete();

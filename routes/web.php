@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/admin/class/{classroom}', [AdminClassController::class, 'delete']);
         Route::get('/admin/verif/belum', [PaymentController::class, 'index']);
         Route::put('/admin/verif/belum/{user}', [PaymentController::class, 'verifUpdate']);
+        Route::delete('/admin/verif/belum/{user}', [PaymentController::class, 'destroy']);
         Route::get('/admin/verif/sudah', [PaymentController::class, 'sudahVerif']);
         Route::put('/admin/verif/sudah/{user}', [PaymentController::class, 'unverifUpdate']);
         Route::get('/admin/prices', [PriceController::class, 'index']);
