@@ -3,7 +3,7 @@
   <div class="container md:pt-36 pt-24 pb-6">
     <div class="flex flex-wrap">
       <div class="w-full md:h-96 hidden md:block bg-center bg-no-repeat bg-cover"
-        style="background-image: url('{{ asset('img/airplane.jpg') }}')"></div>
+        style="background-image: url('{{ asset('img/documentpage.jpg') }}')"></div>
       <img src="{{ asset('img/airplane.jpg') }}" alt="" class="w-full md:hidden">
       <h2 class="w-full text-center text-2xl font-semibold my-4">Document</h2>
       <div class="w-full my-4">

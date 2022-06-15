@@ -6,7 +6,7 @@
         style="background-image: url('{{ asset('img/plane1.jpg') }}')"></div>
       <img src="{{ asset('img/plane1.jpg') }}" alt="" class="w-full md:hidden">
       <div class="w-full md:w-1/2 my-4 px-2 md:order-2">
-        <img src="{{ asset('img/image-training.png') }}" alt="" class="w-full border">
+        <img src="{{ asset('img/assesment.jpg') }}" alt="" class="w-full border">
       </div>
       <div class="w-full md:w-1/2 my-4 px-2 md:order-1">
         <div class="flex items-center gap-2">

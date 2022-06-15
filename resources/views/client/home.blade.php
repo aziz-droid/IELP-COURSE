@@ -78,6 +78,15 @@
           </div>
         </div>
       </div>
+      <div class="w-full px-3 my-4 lg:w-1/2 2xl:w-1/3">
+        <div class="rounded-xl shadow-lg mb-10 overflow-hidden">
+          <img src="{{ asset('img/levels.jpg') }}" alt="" class="w-full">
+          <div class="py-4 px-4">
+            <h2 class="text-xl text-[#02669A] font-semibold text-center mb-2">Levels</h2>
+            <p>All the exercises and reference materials in this course are aviation-related.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 @endsection

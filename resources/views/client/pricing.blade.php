@@ -6,7 +6,7 @@
   <div class="container md:pt-36 pt-24 pb-6">
     <div class="flex flex-wrap">
       <div class="w-full md:h-96 hidden md:block bg-center bg-no-repeat bg-cover"
-        style="background-image: url('{{ asset('img/airplane.jpg') }}')"></div>
+        style="background-image: url('{{ asset('img/pricing.jpg') }}')"></div>
       <img src="{{ asset('img/airplane.jpg') }}" alt="" class="w-full md:hidden">
       <h2 class="text-center w-full md:text-2xl font-semibold text-[#02669A] my-4">KURIKULUM ICAO ENGLISH LANGUAGE
         PROFICIENCY
@@ -47,8 +47,8 @@
         </div>
         <div class="w-full my-4 text-center lg:w-2/3 lg:mx-auto">
           {{ $desc->deskripsi }}<br />
-          <a href="{{ asset('uploads/icaodescriptors.pdf') }}" class="text-blue-600">Download Document
-            Silabus IELP Course</a><br />
+          <a href="{{ asset('uploads/04KURSIL-IELP.pdf') }}" class="text-blue-600">Download kurikulum dan silabus
+            pelatihan ICAO English Language Proficiency</a><br />
           Tanggal Mulai : {{ $desc->dateMulai }}<br />
           Tanggal Akhir : {{ $desc->dateAkhir }}<br />
         </div>
