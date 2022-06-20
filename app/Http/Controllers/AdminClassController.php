@@ -24,7 +24,7 @@ class AdminClassController extends Controller
             'link' => 'required'
         ];
         if ($request->hasFile("dokumen")) {
-            $arrValidated['dokumen'] = 'mimes:pdf|max:2048';
+            $arrValidated['dokumen'] = 'mimes:pdf|max:51200';
         }
         if (!empty($request->youtube)) {
             $arrValidated['youtube'] = 'url';
@@ -55,7 +55,7 @@ class AdminClassController extends Controller
             'link' => 'required'
         ];
         if ($request->hasFile("dokumen")) {
-            $arrValidated['dokumen'] = 'mimes:pdf|max:2048';
+            $arrValidated['dokumen'] = 'mimes:pdf|max:51200';
         }
         if (!empty($request->youtube)) {
             $arrValidated['youtube'] = 'url';
@@ -82,7 +82,7 @@ class AdminClassController extends Controller
         try {
             //code...
             $filePath = public_path('assets/uploads/pdf/' . $classroom->dokumen);
-            if (is_null($classroom->dokumen)) {
+            if (!is_null($classroom->dokumen)) {
                 unlink($filePath);
             }
             $classroom->delete();

@@ -23,7 +23,7 @@ class AuthController extends Controller
             'name' => 'required',
             'password' => 'required|min:8',
             'address' => 'required',
-            'noHp' => 'required|numeric',
+            'noHp' => 'required|numeric|unique:users',
             'profesi' => 'required',
         ]);
         $validated['password'] = Hash::make($validated['password']);

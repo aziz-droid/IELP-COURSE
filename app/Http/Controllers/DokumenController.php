@@ -17,7 +17,7 @@ class DokumenController extends Controller
     {
         $validated = Validator::make($request->all(), [
             'nama' => 'required',
-            'file' => 'required|mimes:pdf|max:4096'
+            'file' => 'required|mimes:pdf|max:51200'
         ]);
         if ($validated->fails()) {
             return redirect('/admin/dokumen')->withErrors($validated)->withInput()->with('error', 'Terjadi kesalahan memasukkan data');
@@ -37,7 +37,7 @@ class DokumenController extends Controller
     {
         $opt = [];
         if ($request->hasFile('file')) {
-            $opt['file'] = 'max:4096|mimes:pdf';
+            $opt['file'] = 'max:51200|mimes:pdf';
         }
         $opt['nama'] = 'required';
         $validated = Validator::make($request->all(), $opt);
@@ -60,8 +60,10 @@ class DokumenController extends Controller
     public function delete(Document $document)
     {
         $filePath = public_path('assets/uploads/pdf/' . $document->file);
-        if (File::exists($filePath)) {
-            unlink($filePath);
+        if (!is_null($document->flie)) {
+            if (File::exists($filePath)) {
+                unlink($filePath);
+            }
         }
         $document->delete();
         return redirect('/admin/dokumen')->with('warning', 'Data berhasil dihapus');
